@@ -27,6 +27,21 @@ body {
     gap: 2px;
 }
 
+.side-choice {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #606060;
+    color: #fff;
+    font-size: 1.5em;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.side-choice:hover {
+    background-color: #69e7b7e0;
+    color: #000;
+}
+
 .cell {
     width: 100px;
     height: 100px;
@@ -64,11 +79,10 @@ body {
     font-size: 16px;
     background-color: #606060;
     color: #fff;
-
+    display: none
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    display: none;
 }
 
 #resetButton:hover {

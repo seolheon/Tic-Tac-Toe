@@ -3,15 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>X - O</title>
+    <title>Tic Tac Toe</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
     <div id="container">
-        <h2 id="currentPlayer">Current Player: X</h2>
-        <div id="board"></div>
+        <h2 id="currentPlayer">Select your side:</h2>
+        <div id="sideSelection">
+            <div id="X" class="side-choice">X</div>
+            <div id="O" class="side-choice">O</div>
+        </div>
+        <div id="board" style="display: none;"></div>
         <div id="result"></div>
-        <button id="resetButton">Play Again</button>
+        <div id="resetButton" style="display: none;">Play Again</div>
     </div>
     <script src="script.js"></script>
 </body>
