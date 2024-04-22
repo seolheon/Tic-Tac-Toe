@@ -1,0 +1,77 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #252525;
+    color: #fff;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#currentPlayer {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 2px;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    background-color: #454545;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+    cursor: pointer;
+    position: relative;
+}
+
+.cell:hover {
+    background-color: #606060;
+}
+
+.disabled-cell {
+    pointer-events: none;
+    background-color: #606060;
+}
+
+.winning-cell.disabled-cell {
+    background-color: #69e7b7e0;
+    color: #202020
+}
+
+#result {
+    margin-top: 20px;
+    font-size: 1.2em;
+}
+
+#resetButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #606060;
+    color: #fff;
+
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: none;
+}
+
+#resetButton:hover {
+    background-color: #69e7b7e0;
+    color: #000;
+}
