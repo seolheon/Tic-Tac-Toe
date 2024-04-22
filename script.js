@@ -5,8 +5,6 @@ const resetButton = document.getElementById('resetButton');
 const sideSelection = document.getElementById('sideSelection');
 const sideChoices = document.querySelectorAll('.side-choice');
 
-
-
 let currentPlayer = '';
 let cells = Array.from({ length: 9 }).fill('');
 let botPlayer = '';
@@ -30,9 +28,12 @@ function checkWinner(player) {
 function handleCellClick(index) {
     if (cells[index] || checkWinner(currentPlayer) || currentPlayer === botPlayer) return;
     cells[index] = currentPlayer;
+    render();
+    if (checkWinner(currentPlayer)) {
+        return;
+    }
     currentPlayer = currentPlayer === 'X' ? botPlayer : 'X';
     currentPlayerDisplay.textContent = `Current Player: ${currentPlayer}`;
-    render();
     if (currentPlayer === botPlayer) {
         setTimeout(() => botMove(), 500);
     }
@@ -44,13 +45,14 @@ function botMove() {
         return acc;
     }, []);
     const randomIndex = Math.floor(Math.random() * availableMoves.length);
-    cells[availableMoves[randomIndex]] = currentPlayer;
+    cells[availableMoves[randomIndex]] = botPlayer;
+    render();
+    if (checkWinner(botPlayer)) {
+        return;
+    }
     currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
     currentPlayerDisplay.textContent = `Current Player: ${currentPlayer}`;
-    render();
 }
-
-
 
 function resetGame() {
     cells = Array.from({ length: 9 }).fill('');
@@ -59,7 +61,7 @@ function resetGame() {
     resultDisplay.textContent = '';
     resetButton.style.display = 'none';
     sideSelection.style.display = 'block';
-    board.style.display = 'none'; 
+    board.style.display = 'none';
 }
 
 function render() {
@@ -74,19 +76,20 @@ function render() {
     });
 
     const winnerInfo = checkWinner(currentPlayer);
-
     if (winnerInfo) {
         if (winnerInfo.winner === 'draw') {
             resultDisplay.textContent = 'It\'s a draw!';
         } else if (winnerInfo.winner){
-            resetButton.style.display = 'block';
             resultDisplay.textContent = `${winnerInfo.winner} wins!`;
             const [a, b, c] = winnerInfo.line;
             board.querySelectorAll('.cell').forEach((cell, index) => {
                 if ([a, b, c].includes(index)) cell.classList.add('winning-cell');
                 else cell.classList.add('disabled-cell');
             });
-        } 
+        }
+        if (winnerInfo.winner) {
+            resetButton.style.display = 'block';
+        }
     } else {
         resultDisplay.textContent = '';
         resetButton.style.display = 'none';
@@ -100,14 +103,12 @@ sideChoices.forEach(choice => {
         currentPlayerDisplay.textContent = `Current Player: ${currentPlayer}`;
         sideSelection.style.display = 'none'; 
         board.style.display = 'grid'; 
-        resetButton.style.display = 'none'; 
         render();
         if (currentPlayer === botPlayer) {
             setTimeout(() => botMove(), 500);
         }
     });
 });
-
 
 
 resetButton.addEventListener('click', resetGame);
