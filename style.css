@@ -16,7 +16,7 @@ body {
 }
 
 #currentPlayer {
-    font-size: 1.5em;
+    font-size: 32px;
     margin-bottom: 20px;
 }
 
@@ -27,6 +27,21 @@ body {
     gap: 2px;
 }
 
+.side-choice {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #606060;
+    color: #fff;
+    font-size: 1.5em;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.side-choice:hover {
+    background-color: #69e7b7e0;
+    color: #000;
+}
+
 .cell {
     width: 100px;
     height: 100px;
@@ -34,7 +49,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 3em;
+    font-size: 56px;
     cursor: pointer;
     position: relative;
 }
@@ -55,20 +70,19 @@ body {
 
 #result {
     margin-top: 20px;
-    font-size: 1.2em;
+    font-size: 24px;
 }
 
 #resetButton {
     margin-top: 20px;
     padding: 10px 20px;
-    font-size: 1em;
+    font-size: 16px;
     background-color: #606060;
     color: #fff;
-
+    display: none;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    display: none;
 }
 
 #resetButton:hover {
